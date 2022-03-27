@@ -6,5 +6,5 @@ import com.trusov.marvel_heroes_guide.list_feature.domain.repository.MarvelRepos
 import javax.inject.Inject
 
 class GetListOfHeroesUseCase @Inject constructor(private val repo: MarvelRepository) {
-    suspend operator fun invoke(): LiveData<List<Hero>> = repo.getListOfHeroes()
+    suspend operator fun invoke(): List<Hero> = repo.getListOfHeroes()
 }
