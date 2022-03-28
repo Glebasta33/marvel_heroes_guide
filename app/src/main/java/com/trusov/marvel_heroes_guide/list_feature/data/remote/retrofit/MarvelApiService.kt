@@ -12,7 +12,7 @@ interface MarvelApiService {
     @GET("public/characters")
     suspend fun getListOfHeroes(
         @Query(QUERY_PARAM_API_KEY) apiKey: String = "9990f3313550ec7d564085cf08148b0b",
-        @Query(QUERY_PARAM_LIMIT) limit: Int = 10,
+        @Query(QUERY_PARAM_LIMIT) limit: Int = 50,
         @Query(QUERY_PARAM_ORDER_BY) orderBy: String = QUERY_PARAM_NAME,
         @Query(QUERY_PARAM_TIMESTAMP) ts: Long,
         @Query(QUERY_PARAM_HASH) hash: String = getHash(ts)
