@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
         (application as App).component.inject(this)
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-        val heroAdapter = HeroAdapter()
+        val heroAdapter = HeroAdapter(application)
         binding.rvHeroes.adapter = heroAdapter
         heroAdapter.onHeroClickListener = {
             Toast.makeText(this, "$it", Toast.LENGTH_SHORT).show()

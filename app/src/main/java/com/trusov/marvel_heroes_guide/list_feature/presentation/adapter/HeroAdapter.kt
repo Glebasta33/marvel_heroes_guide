@@ -1,16 +1,19 @@
 package com.trusov.marvel_heroes_guide.list_feature.presentation.adapter
 
-import android.util.Log
+import android.annotation.SuppressLint
+import android.app.Application
 import android.view.LayoutInflater
-import android.view.RoundedCorner
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
+import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 import com.trusov.marvel_heroes_guide.R
 import com.trusov.marvel_heroes_guide.list_feature.domain.entity.Hero
 import javax.inject.Inject
 
-class HeroAdapter @Inject constructor() : ListAdapter<Hero, HeroViewHolder>(HeroDiffCallback()) {
+class HeroAdapter(
+    private val application: Application
+) : ListAdapter<Hero, HeroViewHolder>(HeroDiffCallback()) {
 
     var onHeroClickListener: ((Hero) -> Unit)? = null
 
@@ -26,7 +29,21 @@ class HeroAdapter @Inject constructor() : ListAdapter<Hero, HeroViewHolder>(Hero
             Picasso.get().load(hero.imageUrl)
                 .error(R.drawable.ic_launcher_background)
                 .placeholder(R.drawable.hero_placeholder)
-                .into(ivImage)
+                .into(ivImage, object : Callback {
+                    @SuppressLint("UseCompatLoadingForDrawables")
+                    override fun onSuccess() {
+                        if (hero.imageUrl == "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg") {
+                            val placeholder = application.resources
+                                .getDrawable(R.drawable.hero_placeholder, null)
+                            ivImage.setImageDrawable(placeholder)
+                        }
+                    }
+
+                    override fun onError(e: Exception?) {
+                        e?.printStackTrace()
+                    }
+
+                })
             root.setOnClickListener {
                 onHeroClickListener?.invoke(hero)
             }
