@@ -4,8 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.trusov.marvel_heroes_guide.list_feature.domain.entity.Hero
-import com.trusov.marvel_heroes_guide.list_feature.domain.use_case.GetListOfHeroesUseCase
+import com.trusov.marvel_heroes_guide.domain.domain.entity.Hero
+import com.trusov.marvel_heroes_guide.domain.domain.use_case.GetListOfHeroesUseCase
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
