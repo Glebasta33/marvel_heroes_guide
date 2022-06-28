@@ -8,8 +8,7 @@ import androidx.recyclerview.widget.ListAdapter
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 import com.trusov.marvel_heroes_guide.R
-import com.trusov.marvel_heroes_guide.list_feature.domain.entity.Hero
-import javax.inject.Inject
+import com.trusov.marvel_heroes_guide.domain.domain.entity.Hero
 
 class HeroAdapter(
     private val application: Application
